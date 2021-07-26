@@ -6,10 +6,15 @@ import styles from '../stylings';
 const MainScreen = () => {
   return (
     <View style={styles.container}>
-      <WebView
-        style={styles.webview}
-        source={{uri: 'https://delta-quiz.herokuapp.com/login'}}
-      />
+      <InternetConnectionAlert
+        onChange={connectionState => {
+          console.log('Connection State: ', connectionState);
+        }}>
+        <WebView
+          style={styles.webview}
+          source={{uri: 'https://delta-quiz.herokuapp.com/login'}}
+        />
+      </InternetConnectionAlert>
     </View>
   );
 };
